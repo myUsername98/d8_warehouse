@@ -27,14 +27,22 @@ sources:
           error_after:
             count: 24
             period: hour
-      
+
       - name: AGENTI
         loaded_at_field: _airbyte_emitted_at
         description: Table du personnel D8.
-      
+
       - name: GIRIAGENTI
         loaded_at_field: _airbyte_emitted_at
         description: Passages par PDV par E.C.R.D
+
+      - name: MODELLI
+        loaded_at_field: _airbyte_emitted_at
+        description: Modèles DA
+
+      - name: CLIENTI
+        loaded_at_field: _airbyte_emitted_at
+        description: Liste des sites. Chaque siège social dispose d'un ou plusieurs sites. On peut assimiler ça à des filiales.
 
   - name: X3
     database: smooth-copilot-393507
