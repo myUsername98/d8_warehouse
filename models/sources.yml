@@ -1,0 +1,53 @@
+version: 2
+
+sources:
+  - name: vegaprod
+    database: smooth-copilot-393507
+    schema: vegaprod
+
+    tables:
+      - name: CHIAMATE
+        loaded_at_field: _airbyte_emitted_at
+        description: Table des appels comprenant des liens vers d'autres tables comme les points de ventes (UNOPV) et les sièges sociaux (CTBCONT)
+        freshness:
+          warn_after:
+            count: 1
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+
+      - name: CTBCONT
+        loaded_at_field: _airbyte_emitted_at
+        description: Table des sièges sociaux de l'entreprise. Le code siège social se retrouve un peu partout au niveau des tables mais pas autant que le code PDV.
+        freshness:
+          warn_after:
+            count: 1
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+      
+      - name: AGENTI
+        loaded_at_field: _airbyte_emitted_at
+        description: Table du personnel D8.
+      
+      - name: GIRIAGENTI
+        loaded_at_field: _airbyte_emitted_at
+        description: Passages par PDV par E.C.R.D
+
+  - name: X3
+    database: smooth-copilot-393507
+    schema: sageX3
+
+    tables:
+      - name: BPCUSTOMER
+        loaded_at_field: _airbyte_emitted_at
+        description: Tables des clients VEGA dans la base de données du logiciel de comptabilité Sage X3.
+        freshness:
+          warn_after:
+            count: 1
+            period: hour
+          error_after:
+            count: 24
+            period: hour
