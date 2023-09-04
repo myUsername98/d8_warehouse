@@ -4,7 +4,7 @@ with
     source as (select * from {{ source("vegaprod", "MODELLI") }}),
 
     renamed as (
-        select
+        select distinct
             mod_cod as code_model,
             mod_desc as description_model,
             mod_for as marque,
