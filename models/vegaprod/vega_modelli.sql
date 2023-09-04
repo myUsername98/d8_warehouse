@@ -1,7 +1,7 @@
 {{ config(materialized="table") }}
 
 with
-    source as (select * from `smooth-copilot-393507.vegaprod.MODELLI`),
+    source as (select * from {{ source("vegaprod", "MODELLI") }}),
 
     renamed as (
         select
