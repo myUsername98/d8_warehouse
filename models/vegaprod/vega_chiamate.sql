@@ -26,7 +26,7 @@ with
             chia_d1 as description1,
             chia_d2 as description2,
             chia_d3 as description3,
-            cast(_airbyte_emitted_at as timestamp) as derniere_maj
+            cast(_airbyte_extracted_at as timestamp) as derniere_maj
         from source as chiamate1
         left join
             {{ ref("vega_ctbcont") }} as client

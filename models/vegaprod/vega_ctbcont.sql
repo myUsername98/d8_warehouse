@@ -16,7 +16,7 @@ with
             ctb_email as email,
             ctb_piva as siren,
             ctb_prov as departement,
-            _airbyte_emitted_at as derniere_maj
+            _airbyte_extracted_at as derniere_maj
 
         from source
 
