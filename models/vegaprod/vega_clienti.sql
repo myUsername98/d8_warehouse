@@ -20,7 +20,7 @@ with
             cli_orar as heure_ouverture,
             cli_age as ecrd_associee,
             cli_note as notes,
-            cast(_airbyte_emitted_at as timestamp) as derniere_maj
+            cast(_airbyte_extracted_at as timestamp) as derniere_maj
         from source
     )
 

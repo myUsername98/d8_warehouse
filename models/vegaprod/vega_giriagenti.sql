@@ -6,7 +6,7 @@ with
     renamed as (
         select distinct
             cast(gag_id as int) as id_passage,
-            gag_chia_cod as appel_associe_passage,
+            gag_chia_cod as appel_associe_au_passage,
             gag_cli as code_site,
             gag_pv as code_pdv,
             agent.nom_agent as nom_agent,
@@ -16,8 +16,6 @@ with
             (gag_incassate - gag_teomerce) as difference_consos,
             cast(gag_dataprevista as timestamp) as date_prevu,
             cast(gag_dataorainiatt as timestamp) as debut_activite,
-            cast(gag_dataoraevasione as timestamp) as fin_activite,
-            {{dbt.datediff("gag_dataorainiatt", "gag_dataoraevasione", "minute")}} as duree_activite,
             case
                 when gag_previsto = 'S'
                 then 'Oui'

@@ -1,7 +1,7 @@
 {{ config(materialized="table") }}
 
 with
-    source as (select * from `smooth-copilot-393507.vegaprod.UNOPV`),
+    source as (select * from {{ source("vegaprod", "UNOPV") }}),
 
     renamed as (
         select distinct
@@ -29,18 +29,11 @@ with
             as _jours_depuis_dernier_ravitaillement,
             cast(upv_dataultimoincasso as timestamp) as date_derniere_recette,
             case
-                when upv_fake = 'S'
-                then "Oui"
-                when upv_fake = 'N'
-                then "Non"
-                else "Autre"
-            end as est_pdv_fictif,
-            case
                 when upv_att = 'S' then "Oui" when upv_att = 'N' then "Non" else "Autre"
             end as pdv_actif,
             cast(upv_fili as int) as filiale,
             upv_note as notes,
-            cast(_airbyte_emitted_at as timestamp) as derniere_maj_donnees
+            cast(_airbyte_extracted_at as timestamp) as derniere_maj_donnees
         from source as pdv
         left join {{ ref("vega_modelli") }} as model on model.code_model = pdv.upv_mod
         left join {{ref("vega_agenti")}} as agent on agent.code_agent = pdv.upv_age
