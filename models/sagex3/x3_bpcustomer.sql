@@ -1,7 +1,7 @@
 {{ config(materialized="table") }}
 
 with
-    source as (select * from `smooth-copilot-393507.sageX3.BPCUSTOMER`),
+    source as (select * from {{ source("vegaprod", "BPCUSTOMER") }}),
 
     renamed as (
         select 
@@ -9,7 +9,7 @@ with
         bpcnam_0 as raison_sociale,
         pte_0 as mode_reglement,
         cast(credat_0 as timestamp) as date_creation,
-        _airbyte_emitted_at as derniere_maj
+        _airbyte_extracted_at as derniere_maj
 
         from source
     )

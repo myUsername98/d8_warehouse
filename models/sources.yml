@@ -40,15 +40,14 @@ sources:
         loaded_at_field: _airbyte_extracted_at
         description: Modèles DA
 
+      - name: UNOPV
+        loaded_at_field: _airbyte_extracted_at
+        description: Liste des Points De Vente (PDV) de l'entreprise
+
       - name: CLIENTI
         loaded_at_field: _airbyte_extracted_at
         description: Liste des sites. Chaque siège social dispose d'un ou plusieurs sites. On peut assimiler ça à des filiales.
 
-  - name: X3
-    database: smooth-copilot-393507
-    schema: sageX3
-
-    tables:
       - name: BPCUSTOMER
         loaded_at_field: _airbyte_extracted_at
         description: Tables des clients VEGA dans la base de données du logiciel de comptabilité Sage X3.
