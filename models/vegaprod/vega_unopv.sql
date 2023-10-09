@@ -29,6 +29,13 @@ with
             as _jours_depuis_dernier_ravitaillement,
             cast(upv_dataultimoincasso as timestamp) as date_derniere_recette,
             case
+                when upv_fake = 'S'
+                then "Oui"
+                when upv_fake = 'N'
+                then "Non"
+                else "Autre"
+            end as est_pdv_fictif,
+            case
                 when upv_att = 'S' then "Oui" when upv_att = 'N' then "Non" else "Autre"
             end as pdv_actif,
             cast(upv_fili as int) as filiale,

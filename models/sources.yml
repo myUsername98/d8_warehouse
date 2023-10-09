@@ -4,11 +4,12 @@ sources:
   - name: vegaprod
     database: d8-warehouse
     schema: vegaprod
+    description: Base de données de l'entreprise alimentée par l'ERP VEGA.
 
     tables:
-      - name: CHIAMATE
+      - name: CTBCONT
         loaded_at_field: _airbyte_extracted_at
-        description: Table des appels comprenant des liens vers d'autres tables comme les points de ventes (UNOPV) et les sièges sociaux (CTBCONT)
+        description: Table des sièges sociaux de l'entreprise. Le code siège social se retrouve un peu partout au niveau des tables mais pas autant que le code PDV.
         freshness:
           warn_after:
             count: 1
@@ -17,9 +18,13 @@ sources:
             count: 24
             period: hour
 
-      - name: CTBCONT
+      - name: CLIENTI
         loaded_at_field: _airbyte_extracted_at
-        description: Table des sièges sociaux de l'entreprise. Le code siège social se retrouve un peu partout au niveau des tables mais pas autant que le code PDV.
+        description: Liste des sites. Chaque siège social dispose d'un ou plusieurs sites. On peut assimiler ça à des filiales.
+
+      - name: CHIAMATE
+        loaded_at_field: _airbyte_extracted_at
+        description: Table des appels comprenant des liens vers d'autres tables comme les points de ventes (UNOPV) et les sièges sociaux (CTBCONT)
         freshness:
           warn_after:
             count: 1
@@ -32,6 +37,18 @@ sources:
         loaded_at_field: _airbyte_extracted_at
         description: Table du personnel D8.
 
+      - name: FATTURE
+        loaded_at_field: _airbyte_extracted_at
+        description: Table des factures de l'entreprise.
+
+      - name: FATRIG
+        loaded_at_field: _airbyte_extracted_at
+        description: Détails des factures.
+
+      - name: NOTECREDITO
+        loaded_at_field: _airbyte_extracted_at
+        description: Table des avoirs de l'entreprise.
+
       - name: GIRIAGENTI
         loaded_at_field: _airbyte_extracted_at
         description: Passages par PDV par E.C.R.D
@@ -43,10 +60,6 @@ sources:
       - name: UNOPV
         loaded_at_field: _airbyte_extracted_at
         description: Liste des Points De Vente (PDV) de l'entreprise
-
-      - name: CLIENTI
-        loaded_at_field: _airbyte_extracted_at
-        description: Liste des sites. Chaque siège social dispose d'un ou plusieurs sites. On peut assimiler ça à des filiales.
 
       - name: BPCUSTOMER
         loaded_at_field: _airbyte_extracted_at
