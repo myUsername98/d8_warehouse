@@ -16,6 +16,8 @@ with
             (gag_incassate - gag_teomerce) as difference_consos,
             cast(gag_dataprevista as timestamp) as date_prevu,
             cast(gag_dataorainiatt as timestamp) as debut_activite,
+            cast(gag_dataoraevasione as timestamp) as fin_activite,
+            {{dbt.datediff("gag_dataorainiatt", "gag_dataoraevasione", "minute")}} as duree_activite,
             case
                 when gag_previsto = 'S'
                 then 'Oui'
