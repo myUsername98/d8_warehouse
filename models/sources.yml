@@ -48,6 +48,10 @@ sources:
       - name: NOTECREDITO
         loaded_at_field: _airbyte_extracted_at
         description: Table des avoirs de l'entreprise.
+      
+      - name: RIGHENOTECREDITO
+        loaded_at_field: _airbyte_extracted_at
+        description: Détails de la table des avoirs de l'entreprise.
 
       - name: GIRIAGENTI
         loaded_at_field: _airbyte_extracted_at
