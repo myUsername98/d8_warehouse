@@ -31,7 +31,7 @@ with
         left join
             {{ ref("vega_ctbcont") }} as client
             on chiamate1.chia_ctb = client.code_siege_social
-        order by date_appel desc
+        order by code_appel desc
     )
 
 select *
