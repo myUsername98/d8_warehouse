@@ -57,6 +57,18 @@ sources:
         loaded_at_field: _airbyte_extracted_at
         description: Passages par PDV par E.C.R.D
 
+      - name: PASDST
+        loaded_at_field: _airbyte_extracted_at
+        description: Table contenant la liste des passages des opérateurs auprès d'un Point De Vente.
+
+      - name: DETRIF
+        loaded_at_field: _airbyte_extracted_at
+        description: Table contenant les informations des ravitaillements.
+
+      - name: RIGRIF
+        loaded_at_field: _airbyte_extrated_at
+        description: Table contenant le détails des produits livrés pendant le ravitaillement.
+
       - name: MODELLI
         loaded_at_field: _airbyte_extracted_at
         description: Modèles DA
