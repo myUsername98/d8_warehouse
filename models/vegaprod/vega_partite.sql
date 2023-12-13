@@ -1,6 +1,7 @@
 {{ config(materialized="table") }}
 
 with
+
 source as (select * from {{ source("vegaprod", "PARTITE") }}),
 
 liste_pdv as (
@@ -55,5 +56,4 @@ renamed as (
         = max_airbyte_extracted.max_extracted_at
 )
 
-select *
-from renamed
+select * from renamed
