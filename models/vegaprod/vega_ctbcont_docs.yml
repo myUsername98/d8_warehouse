@@ -1,0 +1,30 @@
+models:
+  - name: vega_ctbcont
+    description: Table des sièges sociaux de l'entreprise. Le code siège social se
+      retrouve un peu partout au niveau des tables mais pas autant que le code
+      PDV.
+    columns:
+      - name: code_siege_social
+        description: Code siège social généré par VEGA pour identifier les clients.
+      - name: holding
+        description: Holding du client s'il y en a.
+      - name: raison_sociale
+        description: Nom du client
+      - name: adresse1
+        description: Ligne d'adresse 1 du client
+      - name: adresse2
+        description: Ligne d'adresse 2 du client
+      - name: telephone
+        description: N° de téléphone du client
+      - name: code_postal
+        description: Code postal du client
+      - name: ville
+        description: Ville du client
+      - name: email
+        description: Email du client
+      - name: siren
+        description: N° de Siren du client
+      - name: departement
+        description: Département du client
+      - name: derniere_maj
+        description: Dernière mise à jour des données.

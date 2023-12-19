@@ -10,6 +10,19 @@ sources:
       - name: CTBCONT
         loaded_at_field: _airbyte_extracted_at
         description: Table des sièges sociaux de l'entreprise. Le code siège social se retrouve un peu partout au niveau des tables mais pas autant que le code PDV.
+        columns:
+          - name: ctb_cod
+            tests: 
+              - unique
+              - not_null
+        freshness:
+          warn_after:
+            count: 1
+            period: hour
+          error_after:
+            count: 24
+            period: hour
+
         freshness:
           warn_after:
             count: 1
@@ -25,6 +38,11 @@ sources:
       - name: CHIAMATE
         loaded_at_field: _airbyte_extracted_at
         description: Table des appels comprenant des liens vers d'autres tables comme les points de ventes (UNOPV) et les sièges sociaux (CTBCONT)
+        columns:
+          - name: chia_cod
+            tests: 
+              - not_null
+              - unique
         freshness:
           warn_after:
             count: 1
@@ -40,6 +58,11 @@ sources:
       - name: FATTURE
         loaded_at_field: _airbyte_extracted_at
         description: Table des factures de l'entreprise.
+        columns: 
+        - name: fat_prg
+          tests:
+            - not_null
+            - unique
 
       - name: FATRIG
         loaded_at_field: _airbyte_extracted_at
@@ -80,6 +103,12 @@ sources:
       - name: PARTITE
         loaded_at_field: _airbyte_extrated_at
         description: Liste des factures/avoirs des comptes clients de l'entreprise.
+        columns: 
+          - name: par_imp
+            tests:
+              - not_null
+              - totalttc_eq_totalht: 
+                  column_name1: par_val
 
       - name: BPCUSTOMER
         loaded_at_field: _airbyte_extracted_at

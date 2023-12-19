@@ -12,7 +12,7 @@ max_airbyte_extracted as (
 ),
 
 renamed as (
-    select distinct
+    select 
         source.ctb_cod as code_siege_social,
         ctb_holding as holding,
         ctb_desc as raison_sociale,
