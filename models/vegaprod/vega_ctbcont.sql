@@ -12,19 +12,20 @@ max_airbyte_extracted as (
 ),
 
 renamed as (
-    select 
+    select DISTINCT
         source.ctb_cod as code_siege_social,
         ctb_holding as holding,
-        ctb_desc as raison_sociale,
-        ctb_ind as adresse1,
-        ctb_ind2 as adresse2,
+        ctb_desc || coalesce(ctb_rag2, '') as raison_sociale,
+        CONCAT(ctb_ind , ' ', coalesce(ctb_ind2, ''), ',' , ctb_cap , ' ' , ctb_cit) as adresse_complete,
+        ctb_ind as ligne_adresse_1,
+        ctb_ind2 as ligne_adresse_2,
         ctb_tel as telephone,
         ctb_cap as code_postal,
         ctb_cit as ville,
         ctb_email as email,
         ctb_piva as siren,
         ctb_prov as departement,
-        _airbyte_extracted_at as derniere_maj
+        cast(_airbyte_extracted_at as timestamp) as derniere_maj
 
     from source
     inner join

@@ -9,11 +9,18 @@ models:
       - name: holding
         description: Holding du client s'il y en a.
       - name: raison_sociale
-        description: Nom du client
-      - name: adresse1
+        description: Nom du client (Les deux lignes de la raison sociale)
+      - name: adresse_complete
+        description: |-
+          Concaténation de :
+          1- Ligne d'adresse 1
+          2- Ligne d'adresse 2
+          3- Le code postal
+          4- La ville
+      - name: ligne_adresse_1
         description: Ligne d'adresse 1 du client
-      - name: adresse2
-        description: Ligne d'adresse 2 du client
+      - name: ligne_adresse_2
+        description: Ligne d'adresse 2 du client (Souvent vide)
       - name: telephone
         description: N° de téléphone du client
       - name: code_postal
@@ -27,4 +34,4 @@ models:
       - name: departement
         description: Département du client
       - name: derniere_maj
-        description: Dernière mise à jour des données.
+        description: Date et heure de la dernière mise à jour des données.

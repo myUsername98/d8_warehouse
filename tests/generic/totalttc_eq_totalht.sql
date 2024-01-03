@@ -2,6 +2,6 @@
 
 SELECT *
 FROM {{ model }}
-WHERE {{ column_name }} = {{ column_name1 }}
+WHERE {{ column_name }} != {{ column_name1 }}
 
 {% endtest %}
